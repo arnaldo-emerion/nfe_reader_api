@@ -1,0 +1,13 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.pool-id}/.well-known/jwks.json
+          sslEnabled: true
+      openid-configuration: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.pool-id}/.well-known/openid-configuration
+
+aws:
+  cognito:
+    pool-id: us-east-1_6Lf0QzL7g
+  region: us-east-1

@@ -1,0 +1,1298 @@
+openapi: 3.0.2
+info:
+  title: NFe Reader API
+  contact:
+    email: arnaldotecadm@hotmail.com
+  description: >-
+    API em construção.
+    Esta API irá devolver informações relacionadas a Documentos Fiscais Processados
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1
+
+servers:
+  - url: /api/v1
+
+security:
+  - clientCredentials: [ ]
+  - bearerAuth: [ ]
+
+paths:
+  /analise-clientes/valor-total:
+    get:
+      tags:
+        - analiseClientes
+      summary: Under construction
+      operationId: getAnaliseQualitativaValorTotal
+      parameters:
+        - name: startDate
+          in: query
+          description: startDate
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: endDate
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnaliseQualitativaClienteDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /analise-clientes/qtd-pedidos:
+    get:
+      tags:
+        - analiseClientes
+      summary: Under construction
+      operationId: getAnaliseQualitativaQtdPedidos
+      parameters:
+        - name: startDate
+          in: query
+          description: startDate
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: endDate
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnaliseQualitativaClienteDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /analise-clientes/detalhes/{cpfCnpj}:
+    get:
+      tags:
+        - analiseClientes
+      summary: Under construction
+      operationId: getDetalhesForCurvaABC
+      parameters:
+        - name: cpfCnpj
+          in: path
+          description: cpfCnpj
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstatisticaDestinatarioDTO'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /analise-produtos/estatistica-faturamento:
+    get:
+      tags:
+        - analiseProdutos
+      summary: Under construction
+      operationId: getEstatisticaProdutoByFaturamento
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProdutoCurvaABCDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /analise-produtos/dia-a-dia:
+    get:
+      tags:
+        - analiseProdutos
+      summary: Under construction
+      operationId: getQtdProdutoDiaADia
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PedidosDiaADiaDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /analise-produtos/estatistica-volume:
+    get:
+      tags:
+        - analiseProdutos
+      summary: Under construction
+      operationId: getEstatisticaProdutoByVolume
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProdutoCurvaABCDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /analise-produtos/estatistica-frequencia:
+    get:
+      tags:
+        - analiseProdutos
+      summary: Under construction
+      operationId: getEstatisticaProdutoByFrequencia
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProdutoCurvaABCDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /analise-produtos/curva-abc/{codigo}:
+    get:
+      tags:
+        - analiseProdutos
+      summary: Under construction
+      operationId: getTotaisEstatisticaProduto
+      parameters:
+        - name: codigo
+          in: path
+          description: codigo
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProdutoCurvaABCDTO'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /produtos/cabecalho:
+    get:
+      tags:
+        - produtos
+      summary: Under construction
+      operationId: getProdutosCabecalho
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProdutoDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /produtos/codigo/{codigo}:
+    get:
+      tags:
+        - produtos
+      summary: Under construction
+      operationId: getProdutos
+      parameters:
+        - name: codigo
+          in: path
+          description: codigo
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProdutoDTO'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /destinatario/cabecalho:
+    get:
+      tags:
+        - destinatarios
+      summary: Under construction
+      operationId: getDestinatariosCabecalho
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinatarioCabecalhoDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /destinatario/{id}:
+    get:
+      tags:
+        - destinatarios
+      summary: Under construction
+      operationId: getDestinatarioById
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Get Destinatario by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinatarioDTO'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /transportadora/cabecalho:
+    get:
+      tags:
+        - transportadora
+      summary: Under construction
+      operationId: getAllCabecalho
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransportadoraCabecalhoDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /curva-abc/faturamento-anual:
+    get:
+      tags:
+        - curvaAbc
+      summary: Under construction
+      operationId: getCurvaFaturamentoAnual
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicValueTotalDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /curva-abc/faturamento-mensal:
+    get:
+      tags:
+        - curvaAbc
+      summary: Under construction
+      operationId: getCurvaFaturamentoMensal
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicValueTotalDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /curva-abc/faturamento/estado/valor-total:
+    get:
+      tags:
+        - curvaAbc
+      summary: Under construction
+      operationId: getDistVendasEstadoValorTotal
+      parameters:
+        - name: startDate
+          in: query
+          description: startDate
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: endDate
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicValueTotalDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /curva-abc/faturamento/estado/frequencia:
+    get:
+      tags:
+        - curvaAbc
+      summary: Under construction
+      operationId: getDistVendasEstadoFrequencia
+      parameters:
+        - name: startDate
+          in: query
+          description: startDate
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: endDate
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicValueTotalDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /curva-abc/pedido/dia-a-dia:
+    get:
+      tags:
+        - curvaAbc
+      summary: Under construction
+      operationId: getQtdPedidosDiaADia
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PedidosDiaADiaDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /configuracao-geral:
+    get:
+      tags:
+        - generalConfiguration
+      summary: Under construction
+      operationId: getConfiguracaoGeral
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfiguracaoGeralDTO'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /total-imposto:
+    get:
+      tags:
+        - imposto
+      summary: Under construction
+      operationId: getGeneralStatistic
+      parameters:
+        - name: startDate
+          in: query
+          description: startDate
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: endDate
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TotalImpostoNFeDTO'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /nfe/cprod/{cProd}:
+    get:
+      tags:
+        - nfe
+      summary: Under construction
+      operationId: getByCodProd
+      parameters:
+        - name: cProd
+          in: path
+          description: codigo
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProdutoListagemNotaDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /nfe/cpf-cnpj/{cpfCnpj}:
+    get:
+      tags:
+        - nfe
+      summary: Under construction
+      operationId: getByCpfCnpj
+      parameters:
+        - name: cpfCnpj
+          in: path
+          description: cpfCnpj
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProdutoListagemNotaDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http
+      bearerFormat: JWT
+    clientCredentials:
+      type: oauth2
+      description: OAuth2 Client credentials
+      flows:
+        clientCredentials:
+          tokenUrl: ""
+          scopes: { }
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+
+  schemas:
+    ApiError:
+      required:
+        - message
+      properties:
+        message:
+          type: string
+        details:
+          type: string
+        validation:
+          type: array
+          items:
+            $ref: "#/components/schemas/ValidationErrorInfo"
+
+    DateTime:
+      type: string
+      format: date-time
+      example: "2022-03-01T23:55:23.146+00:00"
+      description: Date used for field
+
+    Identifier:
+      type: string
+      format: uuid
+
+    ValidationErrorInfo:
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+
+    BasicValueTotalDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BasicValueTotalDTO'
+
+    BasicValueTotalDTO:
+      type: object
+      properties:
+        label:
+          type: string
+        total:
+          type: number
+          format: double
+
+    NFeDTO:
+      type: object
+      properties:
+        nnf:
+          type: string
+        emitente:
+          $ref: '#/components/schemas/NFeEmitDTO'
+        destinatario:
+          $ref: '#/components/schemas/NFeDestDTO'
+        itens:
+          type: array
+          items:
+            $ref: '#/components/schemas/NFeProdDTO'
+        totais:
+          $ref: '#/components/schemas/NFeTotalDTO'
+
+    NFeEmitDTO:
+      type: object
+      properties:
+        cnpj:
+          type: string
+        nome:
+          type: string
+        nomeFantasia:
+          type: string
+        endereco:
+          $ref: '#/components/schemas/NFeEnderecoDTO'
+
+    NFeDestDTO:
+      type: object
+      properties:
+        cnpj:
+          type: string
+        nome:
+          type: string
+        endereco:
+          $ref: '#/components/schemas/NFeEnderecoDTO'
+        ie:
+          type: string
+
+    NFeTotalDTO:
+      type: object
+      properties:
+        baseCalculo:
+          type: number
+          format: double
+        valorIcms:
+          type: number
+          format: double
+        baseCalculoST:
+          type: number
+          format: double
+        valorST:
+          type: number
+          format: double
+        valorProduto:
+          type: number
+          format: double
+        valorFrete:
+          type: number
+          format: double
+        valorSeguro:
+          type: number
+          format: double
+        valorDesconto:
+          type: number
+          format: double
+        valorImpostoImportacao:
+          type: number
+          format: double
+        valorIpi:
+          type: number
+          format: double
+        valorPis:
+          type: number
+          format: double
+        valorCofins:
+          type: number
+          format: double
+        valorOutros:
+          type: number
+          format: double
+        valorNFe:
+          type: number
+          format: double
+
+    NFeEnderecoDTO:
+      type: object
+      properties:
+        logradouro:
+          type: string
+        numero:
+          type: string
+        bairro:
+          type: string
+        codigoMunicipio:
+          type: string
+        nomeMunicipio:
+          type: string
+        uf:
+          type: string
+        cep:
+          type: string
+        numeroPais:
+          type: string
+        nomePais:
+          type: string
+        fone:
+          type: string
+
+    NFeProdDTO:
+      type: object
+      properties:
+        codigoProduto:
+          type: string
+        ean:
+          type: string
+        nomeProduto:
+          type: string
+        ncm:
+          type: string
+        cfop:
+          type: string
+        unidade:
+          type: string
+        quantidade:
+          type: number
+          format: double
+        valorUnitario:
+          type: number
+          format: double
+        valorTotal:
+          type: number
+          format: double
+        eanTrib:
+          type: number
+          format: double
+        icms:
+          $ref: '#/components/schemas/NFeIcmsDTO'
+        ipi:
+          $ref: '#/components/schemas/NFeIpiDTO'
+        pis:
+          $ref: '#/components/schemas/NFePisDTO'
+        cofins:
+          $ref: '#/components/schemas/NFeCofinsDTO'
+
+    NFeIcmsDTO:
+      type: object
+      properties:
+        origem:
+          type: string
+        cst:
+          type: string
+        modBaseCalculo:
+          type: number
+          format: double
+        valorBaseCalculo:
+          type: number
+          format: double
+        percentualIcms:
+          type: number
+          format: double
+        valorICMS:
+          type: number
+          format: double
+        modBaseCalculoST:
+          type: number
+          format: double
+        percentualMvaST:
+          type: number
+          format: double
+        valorBaseCalculoST:
+          type: number
+          format: double
+        percentualIcmsST:
+          type: number
+          format: double
+        valorIcmsST:
+          type: number
+          format: double
+
+    NFeIpiDTO:
+      type: object
+      properties:
+        cst:
+          type: string
+        baseCalculo:
+          type: number
+          format: double
+        percentual:
+          type: number
+          format: double
+        valor:
+          type: number
+          format: double
+
+    NFePisDTO:
+      type: object
+      properties:
+        cst:
+          type: string
+        baseCalculo:
+          type: number
+          format: double
+        percentual:
+          type: number
+          format: double
+        valor:
+          type: number
+          format: double
+
+    NFeCofinsDTO:
+      type: object
+      properties:
+        cst:
+          type: string
+        baseCalculo:
+          type: number
+          format: double
+        percentual:
+          type: number
+          format: double
+        valor:
+          type: number
+          format: double
+
+    DocumentoFiscalListagemDTO:
+      type: object
+      properties:
+        identificador:
+          type: string
+        numeroDocumento:
+          type: string
+        razaoSocial:
+          type: string
+        naturezaOperacao:
+          type: string
+        chaveAcesso:
+          type: string
+        emissao:
+          $ref: '#/components/schemas/DateTime'
+        tipoDocumento:
+          enum:
+            - NOTA_FISCAL
+            - CUPOM_FISCAL
+
+    AnaliseQualitativaClienteDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnaliseQualitativaClienteDTO'
+
+    AnaliseQualitativaClienteDTO:
+      type: object
+      properties:
+        cnpj:
+          type: string
+        razaoSocial:
+          type: string
+        sum:
+          type: number
+          format: double
+        min:
+          type: number
+          format: double
+        max:
+          type: number
+          format: double
+        avg:
+          type: number
+          format: double
+        count:
+          type: number
+          format: double
+        tipoDocumento:
+          type: string
+
+    ProdutoCurvaABCDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProdutoCurvaABCDTO'
+
+    ProdutoCurvaABCDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+        codigo:
+          type: string
+        descricao:
+          type: string
+        volume:
+          type: number
+          format: double
+        faturamento:
+          type: number
+          format: double
+        frequencia:
+          type: number
+          format: double
+        precoMedio:
+          type: number
+          format: double
+        ticketMedio:
+          type: number
+          format: double
+        unidade:
+          type: string
+        ncm:
+          type: string
+        tipoDocumento:
+          type: string
+        partVolume:
+          type: number
+          format: double
+        partFaturamento:
+          type: number
+          format: double
+        partFrequencia:
+          type: number
+          format: double
+
+    TransportadoraCabecalhoDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TransportadoraCabecalhoDTO'
+
+    TransportadoraCabecalhoDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        cnpj:
+          type: string
+        ie:
+          type: string
+        municipio:
+          type: string
+        uf:
+          type: string
+        razaoSocial:
+          type: string
+
+    ProdutoDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProdutoDTO'
+
+    ProdutoDTO:
+      type: object
+      properties:
+        tipoDocumento:
+          type: string
+        codigo:
+          type: string
+        descricao:
+          type: string
+        ean:
+          type: string
+        unidade:
+          type: string
+        ncm:
+          type: string
+
+    DestinatarioCabecalhoDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DestinatarioCabecalhoDTO'
+
+    DestinatarioCabecalhoDTO:
+      type: object
+      properties:
+        tipoDocumento:
+          type: string
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        cnpj:
+          type: string
+        uf:
+          type: string
+        municipio:
+          type: string
+        telefone:
+          type: string
+        cep:
+          type: string
+
+    DestinatarioDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        cnpj:
+          type: string
+        razaoSocial:
+          type: string
+        ie:
+          type: string
+        uf:
+          type: string
+        municipio:
+          type: string
+        bairro:
+          type: string
+        telefone:
+          type: string
+        cep:
+          type: string
+        logradouro:
+          type: string
+        numero:
+          type: string
+        cPais:
+          type: string
+        xPais:
+          type: string
+        indIEDest:
+          type: string
+
+    ConfiguracaoGeralDTO:
+      type: object
+      properties:
+        qtdMaxNFe:
+          type: integer
+
+    TotalImpostoNFeDTO:
+      type: object
+      properties:
+        pfcpstret:
+          type: number
+          format: double
+        vbc:
+          type: number
+          format: double
+        vbcst:
+          type: number
+          format: double
+        vcofins:
+          type: number
+          format: double
+        vdesc:
+          type: number
+          format: double
+        vfcp:
+          type: number
+          format: double
+        vfcpstret:
+          type: number
+          format: double
+        vfrete:
+          type: number
+          format: double
+        vicms:
+          type: number
+          format: double
+        vicmsdeson:
+          type: number
+          format: double
+        vicmsufdest:
+          type: number
+          format: double
+        vicmsufremet:
+          type: number
+          format: double
+        vii:
+          type: number
+          format: double
+        vipi:
+          type: number
+          format: double
+        vipidevol:
+          type: number
+          format: double
+        vnf:
+          type: number
+          format: double
+        voutro:
+          type: number
+          format: double
+        vpis:
+          type: number
+          format: double
+        vprod:
+          type: number
+          format: double
+        vst:
+          type: number
+          format: double
+        vseg:
+          type: number
+          format: double
+        vtottrib:
+          type: number
+          format: double
+
+    PedidosDiaADiaDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PedidosDiaADiaDTO'
+
+    PedidosDiaADiaDTO:
+      type: object
+      properties:
+        dataEmissao:
+          type: string
+          format: date
+        total:
+          type: number
+          format: double
+
+    ProdutoListagemNotaDTOList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProdutoListagemNotaDTO'
+
+    ProdutoListagemNotaDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        naturezaOperacao:
+          type: string
+        numeroNotaFiscal:
+          type: string
+        razaoSocial:
+          type: string
+        chaveAcesso:
+          type: string
+        uf:
+          type: string
+        municipio:
+          type: string
+        valorNFe:
+          type: number
+          format: double
+        emissao:
+          type: string
+          format: date
+        cnpjDestinatario:
+          type: string
+        valorUnitario:
+          type: number
+          format: double
+        quantidade:
+          type: integer
+        valorTotal:
+          type: number
+          format: double
+        tipoDocumento:
+          type: string
+
+    EstatisticaDestinatarioDTO:
+      type: object
+      properties:
+        razaoSocial:
+          type: string
+        cpfCnpj:
+          type: string
+        menorCompra:
+          type: number
+          format: double
+        maiorCompra:
+          type: number
+          format: double
+        totalPedidos:
+          type: number
+          format: double
+        valorTotalCompras:
+          type: number
+          format: double
+        valorMedioPedido:
+          type: number
+          format: double
+        dataUltimaCompra:
+          type: string
+          format: date
+        quantidadeMediaItensPorPedido:
+          type: number
+          format: double
+        participacaoCliente:
+          type: number
+          format: double
+        rankingFaturamento:
+          type: integer
+        rankingQtdPedidos:
+          type: integer
