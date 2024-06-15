@@ -12,7 +12,7 @@ import kotlin.reflect.KProperty1
 @Service
 class DestinatarioService(
     private val destinatarioPersistence: DestinatarioPersistencePort,
-    private val nfePersistencePOrt: NFePersistencePort
+    private val nfePersistencePort: NFePersistencePort
 ) : DestinatarioServicePort {
 
     override fun getCurvaDeClientesPorCriterio(
@@ -60,12 +60,12 @@ class DestinatarioService(
             cpfCnpj = cpfCnpj
         )
 
-        val rankingFaturamento = this.nfePersistencePOrt.getRankingFaturamento(
+        val rankingFaturamento = this.nfePersistencePort.getRankingFaturamento(
             identityId = identityId,
             natOperacaoList = natOperacaoList
         )
 
-        val rankingQtdPedidos = this.nfePersistencePOrt.getRankingQtdPedidos(
+        val rankingQtdPedidos = this.nfePersistencePort.getRankingQtdPedidos(
             identityId = identityId,
             natOperacaoList = natOperacaoList
         )

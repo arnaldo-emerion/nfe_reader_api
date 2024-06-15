@@ -620,6 +620,28 @@ paths:
         500:
           $ref: '#/components/responses/InternalServerError'
 
+  /dashboard:
+    get:
+      tags:
+        - dashboard
+      summary: Under construction
+      operationId: getDashBoardBasicInfo
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalisysTotalDTO'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
 components:
   securitySchemes:
     bearerAuth:
@@ -1296,3 +1318,21 @@ components:
           type: integer
         rankingQtdPedidos:
           type: integer
+    AnalisysTotalDTO:
+      type: object
+      properties:
+        totalNotasProcessadas:
+          type: number
+          format: double
+        totalCupomFiscalProcessados:
+          type: number
+          format: double
+        clienteCount:
+          type: number
+          format: double
+        produtoCount:
+          type: number
+          format: double
+        valorTotalProcessado:
+          type: number
+          format: double

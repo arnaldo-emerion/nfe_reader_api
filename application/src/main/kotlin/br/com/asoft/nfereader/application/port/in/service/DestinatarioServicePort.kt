@@ -1,9 +1,6 @@
 package br.com.asoft.nfereader.application.port.`in`.service
 
-import br.com.asoft.nfereader.model.AnaliseQualitativaCliente
-import br.com.asoft.nfereader.model.Destinatario
-import br.com.asoft.nfereader.model.DestinatarioCabecalho
-import br.com.asoft.nfereader.model.EstatisticaDestinatario
+import br.com.asoft.nfereader.model.*
 import java.time.LocalDate
 import kotlin.reflect.KProperty1
 
