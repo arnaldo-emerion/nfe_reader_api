@@ -23,6 +23,7 @@ dependencies {
     implementation(SwaggerDependencies.parser)
     implementation(SpringBootDependencies.springDocOpenApi)
     implementation(JavaxDependencies.jaxbApi)
+    implementation(SpringBootDependencies.actuator)
 }
 
 tasks.test {

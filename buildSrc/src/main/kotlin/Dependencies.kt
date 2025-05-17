@@ -16,7 +16,7 @@ object SpringBootDependencies {
     const val oauth2 = "org.springframework.boot:spring-boot-starter-oauth2-resource-server:${Versions.springFramework}"
     const val dataJpa = "org.springframework.boot:spring-boot-starter-data-jpa:${Versions.springFramework}"
     const val springDocOpenApi = "org.springdoc:springdoc-openapi-starter-webmvc-ui:${Versions.springDocOpenApi}"
-
+    const val actuator = "org.springframework.boot:spring-boot-starter-actuator"
 }
 
 object SpringdocDependencies{

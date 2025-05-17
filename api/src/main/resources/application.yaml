@@ -11,3 +11,12 @@ aws:
   cognito:
     pool-id: us-east-1_6Lf0QzL7g
   region: us-east-1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, env
+  endpoint:
+    health:
+      show-details: never
