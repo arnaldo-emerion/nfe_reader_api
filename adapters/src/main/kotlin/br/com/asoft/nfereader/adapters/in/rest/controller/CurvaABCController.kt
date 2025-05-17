@@ -2,6 +2,7 @@ package br.com.asoft.nfereader.adapters.`in`.rest.controller
 
 import br.com.asoft.nfereader.adapters.`in`.rest.mapper.CurvaABCMapper.toDto
 import br.com.asoft.nfereader.application.port.`in`.service.DocumentoFiscalServicePort
+import br.com.asoft.nfereader.application.port.`in`.service.NFeServicePort
 import br.com.asoft.nfereader.application.port.`in`.service.SecurityUtilPort
 import br.com.asoft.nfereader.application.port.`in`.service.UserConfigurationServicePort
 import br.com.asoft.nfereader.controller.CurvaAbcApi
@@ -14,6 +15,7 @@ import java.time.LocalDate
 @RestController
 class CurvaABCController(
     private val documentoFiscalService: DocumentoFiscalServicePort,
+    private val nFeService: NFeServicePort,
     private val userConfigurationService: UserConfigurationServicePort,
     private val securityUtil: SecurityUtilPort,
 ) : CurvaAbcApi {
@@ -61,6 +63,14 @@ class CurvaABCController(
 
     override fun getQtdPedidosDiaADia(): ResponseEntity<List<PedidosDiaADiaDTO>> {
         val list = this.documentoFiscalService.getQtdPedidosDiaADia(
+            identityId = securityUtil.getIdentityId(),
+            natOperacaoList = userConfigurationService.getNFeProcessaveis()
+        )
+        return ResponseEntity.ok(list.map { it.toDto() })
+    }
+
+    override fun getCurvaABCFaturamentoPorDiaEMes(): ResponseEntity<List<PedidosDiaADiaDTO>> {
+        val list = this.nFeService.getFaturamentoDiaADia(
             identityId = securityUtil.getIdentityId(),
             natOperacaoList = userConfigurationService.getNFeProcessaveis()
         )

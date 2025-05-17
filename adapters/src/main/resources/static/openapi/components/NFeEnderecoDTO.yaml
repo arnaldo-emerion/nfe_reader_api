@@ -1,0 +1,22 @@
+type: object
+properties:
+  logradouro:
+    type: string
+  numero:
+    type: string
+  bairro:
+    type: string
+  codigoMunicipio:
+    type: string
+  nomeMunicipio:
+    type: string
+  uf:
+    type: string
+  cep:
+    type: string
+  numeroPais:
+    type: string
+  nomePais:
+    type: string
+  fone:
+    type: string

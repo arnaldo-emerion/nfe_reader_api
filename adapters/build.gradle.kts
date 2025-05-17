@@ -25,42 +25,11 @@ dependencies {
     testImplementation(TestDependencies.kotlinTest)
 }
 
-/*
-val appNamespace = "$group.nfereader"
-val openApiGeneratedResources = "openapi-generated"
-val openApiSrcFolder = "$projectDir/$openApiGeneratedResources"
-val openApiFileLocation = "$projectDir/src/main/resources/static/openapi.yaml"
-
-val openApiGeneratorName = "kotlin"
-val openApiKotlinSrcFolder = "$openApiSrcFolder/src/main/kotlin"
-val openApiJavaSrcFolder = "$openApiSrcFolder/src/main/java"
-openApiGenerate {
-    val configs = mapOf(
-        "interfaceOnly" to "true",
-        "reactive" to "false",
-        "exceptionHandler" to "false",
-        "gradleBuildFile" to "true",
-        "useTags" to "true",
-        "enumPropertyNaming" to "original",
-        "serializationLibrary" to "jackson"
-    )
-
-    inputSpec.set(openApiFileLocation)
-    outputDir.set(openApiSrcFolder)
-    apiPackage.set("$appNamespace.api")
-    modelPackage.set("$appNamespace.dtos")
-    packageName.set(appNamespace)
-    generatorName.set(openApiGeneratorName)
-    configOptions.set(configs)
-    typeMappings.put("DateTime", "Date")
-    importMappings.put("Date", "java.util.Date")
-}*/
-
 val openApiGeneratedResources = "openapi-generated"
 val openApiSrcFolder = "$buildDir/$openApiGeneratedResources"
 val openApiKotlinSrcFolder = "$openApiSrcFolder/src/main/kotlin"
 openApiGenerate {
-    inputSpec.set("$rootDir/adapters/src/main/resources/static/openapi.yaml")
+    inputSpec.set("$rootDir/adapters/src/main/resources/static/openapi/openapi.yaml")
     generatorName.set("kotlin-spring")
     library.set("spring-boot")
     outputDir.set(openApiSrcFolder)

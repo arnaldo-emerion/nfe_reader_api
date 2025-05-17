@@ -1,0 +1,13 @@
+type: object
+properties:
+  cst:
+    type: string
+  baseCalculo:
+    type: number
+    format: double
+  percentual:
+    type: number
+    format: double
+  valor:
+    type: number
+    format: double

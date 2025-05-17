@@ -1,0 +1,16 @@
+type: object
+properties:
+  cnpj:
+    type: string
+  inscricaoEstadual:
+    type: string
+  razaoSocail:
+    type: string
+  nomeFantasia:
+    type: string
+  endereco:
+    $ref: ./NFeEnderecoDTO.yaml
+  telefone:
+    type: string
+  regimeTributario:
+    type: string

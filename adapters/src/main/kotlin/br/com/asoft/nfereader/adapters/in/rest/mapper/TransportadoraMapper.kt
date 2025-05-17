@@ -1,11 +1,11 @@
 package br.com.asoft.nfereader.adapters.`in`.rest.mapper
 
 import br.com.asoft.nfereader.model.Transportadora
-import br.com.asoft.nfereader.model.TransportadoraCabecalhoDTO
+import br.com.asoft.nfereader.model.TransportadoraDTO
 
 object TransportadoraMapper {
-    fun Transportadora.toDto(): TransportadoraCabecalhoDTO {
-        return TransportadoraCabecalhoDTO(
+    fun Transportadora.toDto(): TransportadoraDTO {
+        return TransportadoraDTO(
             id = this.id,
             cnpj = this.cnpj,
             ie = this.ie,

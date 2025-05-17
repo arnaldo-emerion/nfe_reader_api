@@ -1,0 +1,68 @@
+type: object
+properties:
+  baseCalculo:
+    type: number
+    format: double
+  valorIcms:
+    type: number
+    format: double
+  baseCalculoST:
+    type: number
+    format: double
+  valorST:
+    type: number
+    format: double
+  valorProduto:
+    type: number
+    format: double
+  valorFrete:
+    type: number
+    format: double
+  valorSeguro:
+    type: number
+    format: double
+  valorDesconto:
+    type: number
+    format: double
+  valorImpostoImportacao:
+    type: number
+    format: double
+  valorIpi:
+    type: number
+    format: double
+  valorPis:
+    type: number
+    format: double
+  valorCofins:
+    type: number
+    format: double
+  valorOutros:
+    type: number
+    format: double
+  valorNFe:
+    type: number
+    format: double
+  valorICMSDesoneracao:
+    type: number
+    format: double
+  valorFcp:
+    type: number
+    format: double
+  valorICMSUFDestino:
+    type: number
+    format: double
+  valorICMSUFRemetente:
+    type: number
+    format: double
+  valorFCPRetido:
+    type: number
+    format: double
+  percentualFCPRetido:
+    type: number
+    format: double
+  valorIPIDevolvido:
+    type: number
+    format: double
+  valorTOtalTributado:
+    type: number
+    format: double

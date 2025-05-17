@@ -15,7 +15,7 @@ object AnaliseClienteMapper {
     fun Destinatario.toDto() =
         DestinatarioDTO(
             id,
-            cnpj,
+            cpfCnpj,
             razaoSocial,
             ie,
             uf,

@@ -1,0 +1,19 @@
+type: object
+properties:
+  tipoDocumento:
+    type: string
+  id:
+    type: integer
+    format: int64
+  nome:
+    type: string
+  cnpj:
+    type: string
+  uf:
+    type: string
+  municipio:
+    type: string
+  telefone:
+    type: string
+  cep:
+    type: string

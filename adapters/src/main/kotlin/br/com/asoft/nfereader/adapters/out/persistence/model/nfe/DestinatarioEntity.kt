@@ -23,9 +23,9 @@ data class DestinatarioEntity(
     val cep: String? = null,
     val logradouro: String? = null,
     val numero: String? = null,
-    val cPais: String? = null,
+    val cPais: Long? = null,
     val xPais: String? = null,
-    val indIEDest: String? = null,
+    val indIEDest: Int? = null,
     @ManyToOne
     val emitenteEntity: EmitenteEntity? = null,
     override val userCreate: String

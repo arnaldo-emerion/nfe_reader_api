@@ -1,0 +1,17 @@
+type: object
+properties:
+  totalNotasProcessadas:
+    type: number
+    format: double
+  totalCupomFiscalProcessados:
+    type: number
+    format: double
+  clienteCount:
+    type: number
+    format: double
+  produtoCount:
+    type: number
+    format: double
+  valorTotalProcessado:
+    type: number
+    format: double

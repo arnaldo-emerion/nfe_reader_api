@@ -5,8 +5,8 @@ import br.com.asoft.nfereader.adapters.out.persistence.repository.DocumentoFisca
 import br.com.asoft.nfereader.application.port.out.persistence.DocumentoFiscalPersistencePort
 import br.com.asoft.nfereader.model.BasicAXChartInfo
 import br.com.asoft.nfereader.model.DocumentoFiscal
+import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
-import br.com.asoft.nfereader.model.TotalImpostoNFe
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 import java.util.Date
@@ -83,7 +83,7 @@ class DocumentoFiscalPersistenceAdapter(
         startDate: LocalDate?,
         endDate: LocalDate?,
         natOperacaoList: List<String>
-    ): TotalImpostoNFe {
+    ): NFeTotalICMS {
         return this.documentoFiscalRepository.getTotaisImpostos(
             identityId = identityId,
             startDate = startDate,

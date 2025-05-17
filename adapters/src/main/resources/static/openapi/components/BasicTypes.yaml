@@ -1,0 +1,30 @@
+DateTime:
+  type: string
+  format: date-time
+  example: "2022-03-01T23:55:23.146+00:00"
+  description: Date used for field
+
+Identifier:
+  type: string
+  format: uuid
+
+ValidationErrorInfo:
+  properties:
+    field:
+      type: string
+    message:
+      type: string
+
+BasicValueTotalDTOList:
+  type: array
+  items:
+    $ref: ./BasicTypes.yaml#/BasicValueTotalDTO
+
+BasicValueTotalDTO:
+  type: object
+  properties:
+    label:
+      type: string
+    total:
+      type: number
+      format: double

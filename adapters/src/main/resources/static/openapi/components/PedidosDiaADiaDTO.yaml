@@ -1,0 +1,8 @@
+type: object
+properties:
+  dataEmissao:
+    type: string
+    format: date
+  total:
+    type: number
+    format: double

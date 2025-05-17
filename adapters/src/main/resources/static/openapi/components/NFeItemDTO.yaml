@@ -1,0 +1,23 @@
+type: object
+properties:
+  codigo:
+    type: string
+  descricao:
+    type: string
+  quantidade:
+    type: number
+    format: double
+  unidade:
+    type: string
+  valorUnitario:
+    type: number
+    format: double
+  valorProduto:
+    type: number
+    format: double
+  ncm:
+    type: string
+  cfop:
+    type: string
+  emitente:
+    $ref: ./EmitenteDTO.yaml

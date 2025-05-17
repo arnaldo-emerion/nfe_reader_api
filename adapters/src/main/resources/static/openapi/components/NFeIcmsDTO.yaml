@@ -1,0 +1,33 @@
+type: object
+properties:
+  origem:
+    type: string
+  cst:
+    type: string
+  modBaseCalculo:
+    type: number
+    format: double
+  valorBaseCalculo:
+    type: number
+    format: double
+  percentualIcms:
+    type: number
+    format: double
+  valorICMS:
+    type: number
+    format: double
+  modBaseCalculoST:
+    type: number
+    format: double
+  percentualMvaST:
+    type: number
+    format: double
+  valorBaseCalculoST:
+    type: number
+    format: double
+  percentualIcmsST:
+    type: number
+    format: double
+  valorIcmsST:
+    type: number
+    format: double

@@ -1,0 +1,27 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  naturezaOPeracao:
+    type: string
+  tipo:
+    type: string
+  chaveAcesso:
+    type: string
+  numeroNotaFiscal:
+    type: integer
+    format: int64
+  dataNotaFiscal:
+    type: string
+    format: date
+  emitente:
+    $ref: ./EmitenteDTO.yaml
+  destinatario:
+    $ref: ./DestinatarioDTO.yaml
+  transportadora:
+    $ref: ./TransportadoraDTO.yaml
+  totalIcms:
+    $ref: ./NFeTotalICMSDTO.yaml
+  items:
+    $ref: ./NFeItemListDTO.yaml

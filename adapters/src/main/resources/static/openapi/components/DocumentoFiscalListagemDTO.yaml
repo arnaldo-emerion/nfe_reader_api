@@ -1,0 +1,18 @@
+type: object
+properties:
+  identificador:
+    type: string
+  numeroDocumento:
+    type: string
+  razaoSocial:
+    type: string
+  naturezaOperacao:
+    type: string
+  chaveAcesso:
+    type: string
+  emissao:
+    $ref: ./BasicTypes.yaml#/DateTime
+  tipoDocumento:
+    enum:
+      - NOTA_FISCAL
+      - CUPOM_FISCAL

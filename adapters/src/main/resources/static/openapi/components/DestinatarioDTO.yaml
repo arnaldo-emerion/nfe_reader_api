@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  cpfCnpj:
+    type: string
+  razaoSocial:
+    type: string
+  ie:
+    type: string
+  uf:
+    type: string
+  municipio:
+    type: string
+  bairro:
+    type: string
+  telefone:
+    type: string
+  cep:
+    type: string
+  logradouro:
+    type: string
+  numero:
+    type: string
+  cPais:
+    type: integer
+    format: int64
+  xPais:
+    type: string
+  indIEDest:
+    type: integer

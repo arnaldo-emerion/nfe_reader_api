@@ -1,9 +1,7 @@
 package br.com.asoft.nfereader.adapters.out.persistence.repository
 
 import br.com.asoft.nfereader.adapters.out.persistence.model.nfe.NFeEntity
-import br.com.asoft.nfereader.adapters.out.persistence.model.projection.AnalisysTotalProjection
-import br.com.asoft.nfereader.adapters.out.persistence.model.projection.ProdutoListagemNotaProjection
-import br.com.asoft.nfereader.adapters.out.persistence.model.projection.RankingProjection
+import br.com.asoft.nfereader.adapters.out.persistence.model.projection.*
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
@@ -204,4 +202,135 @@ interface NFeRepository : PagingAndSortingRepository<NFeEntity, Long> {
         @Param("natOperacaoList") natOperacaoList: List<String>
     ): AnalisysTotalProjection
 
+    @Query(
+        nativeQuery = true,
+        value = """
+            select
+                nfe.data_emissao as dataEmissao,
+                sum(nt.vnf) as total
+            from
+                nfe_reader.nfe_totalicms nt
+            left join nfe_reader.nfe nfe on
+                nfe.id = nt.nfe_id
+            where
+                nfe.data_emissao is not null
+                and ( cast(:identityId as varchar(64)) is null or nfe.user_create = cast(:identityId as varchar(64)))
+                and (nfe.nat_operacao in (:natOperacaoList))
+            group by
+                nfe.data_emissao
+                
+            union all 
+            
+            select
+                cfm.data_emissao as dataEmissao,
+                sum(citm.vcfe) as total
+            from
+                nfe_reader.cfe_icms_total_model citm
+            left join nfe_reader.cupom_fiscal_model cfm on
+                cfm.id = citm.cupom_fiscal_id 
+            where
+                cfm.data_emissao is not null
+                and ( cast(:identityId as varchar(64)) is null or cfm.user_create = cast(:identityId as varchar(64)))
+                and (cfm.nat_operacao in (:natOperacaoList))
+            group by
+                cfm.data_emissao
+            order by
+                1
+        """
+    )
+    fun getFaturamentoDiaADia(
+        @Param("identityId") identityId: String,
+        @Param("natOperacaoList") natOperacaoList: List<String>
+    ): List<PedidosDiaADiaProjection>
+
+    @Query(
+        nativeQuery = true,
+        value = """
+            select
+                n.id as id,
+                n.nat_operacao as naturezaOperacao,
+                n.tp_nf as tipo,
+                n.chavenfe as chaveAcesso,
+                n.nnf as numeroNotaFiscal,
+                n.data_emissao as dataEmissao,
+                
+                e.id as emitenteId,
+                e.cnpj as emitenteCpfCnpj,
+                e.razao_social as emitenteRazaoSocial,
+                e.nome_fantasia as emitenteNomeFantasia,
+                e.ie as emitenteInscricaoEstadual,
+                e.crt,
+                e.uf as emitenteUf,
+                e.municipio as emitenteMunicipio,
+                e.bairro as emitenteBairro,
+                e.telefone as emitenteTelefone,
+                e.logradouro as emitenteLogradouro,
+                e.cep as emitenteCep,
+                e.c_pais as emitenteCodigoPais,
+                e.x_pais as emitenteNomePais,
+                
+                d.id as destinatarioId,
+                d.cnpj as destinatarioCpfCnpj,
+                d.indIEDest as destinatarioIndIEDest,
+                d.razao_social as destinatarioRazaoSocial,
+                d.ie as destinatarioInscricaoEstadual,
+                d.uf as destinatarioUf,
+                d.municipio as destinatarioMunicipio,
+                d.bairro as destinatarioBairro,
+                d.telefone as destinatarioTelefone,
+                d.logradouro as destinatarioLogradouro,
+                d.cep as destinatarioCep,
+                d.c_pais as destinatarioCodigoPais,
+                d.x_pais as destinatarioNomePais,
+                d.numero as destinatarioNumero,
+                
+                t.id as transportadoraId,
+                t.cnpj as transportadoraCpfCnpj,
+                t.ie as transportadoraInscricaoEstadual,
+                t.municipio as transportadoraMunicipio,
+                t.uf as transportadoraUf,
+                t.razao_social as transportadoraRazaoSocial,
+                t.endereco as transportadoraEndereco,
+                
+                nt.vnf as valorNotaFiscal,
+                nt.vbc as valorBaseCalculo,
+                nt.vicms as valorIcms,
+                nt.vbcst as valorBaseCalculoST,
+                nt.vst as valorST,
+                nt.v_prod as valorProdutos,
+                nt.v_frete as valorFrete,
+                nt.v_seg as valorSeguro,
+                nt.v_desc as valorDesconto,
+                nt.vii as valorImpostoImportacao,
+                nt.vipi as valorIpi,
+                nt.vcofins as valorCofins,
+                nt.v_outro as valorOutros,
+                nt.vicmsdeson as valorIcmsDesonerado,
+                nt.vfcp as valorFcp,
+                nt.vicmsufdest as valorIcmsUfDestinatario,
+                nt.vicmsufremet as valorIcmsUfRemetente,
+                nt.vfcpstret as valorFcpStRetido,
+                nt.vipidevol as valorIpiDevolucao,
+                nt.v_tot_trib as valorTotalTributos,
+                nt.vpis as valorPis,
+                nt.pfcpstret as percentualFcpSTRetido
+            from
+                nfe_reader.nfe n
+            left join nfe_reader.nfe_totalicms nt on
+                nt.nfe_id = n.id
+            left join nfe_reader.emitente e on
+                e.id = n.emitente_id
+            left join nfe_reader.destinatario d on
+                d.id = n.destinatario_id
+            left join nfe_reader.transportadora t on
+                t.id = n.transportadora_id
+            where 1 = 1
+                and n.id = :id
+                and ( cast(:identityId as varchar(64)) is null or n.user_create = cast(:identityId as varchar(64)))
+        """
+    )
+    fun getNFeById(
+        @Param("identityId") identityId: String,
+        @Param("id") id: Long,
+    ): NFeCompletaProjection
 }

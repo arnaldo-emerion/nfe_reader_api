@@ -1,0 +1,29 @@
+type: object
+properties:
+  codigoUf:
+    type: string
+  codigoNotaFiscal:
+    type: string
+  naturezaOperacao:
+    type: string
+  numeroNotaFiscal:
+    type: string
+  dataEmissao:
+    type: string
+    format: date-time
+  tipoNotaFiscal:
+    type: string
+  codigoMunicipioFG:
+    type: string
+  informacaoAdicional:
+    type: string
+  emitente:
+    $ref: ./NFeEmitDTO.yaml
+  destinatario:
+    $ref: ./NFeDestDTO.yaml
+  itens:
+    type: array
+    items:
+      $ref: ./NFeProdDTO.yaml
+  totais:
+    $ref: ./NFeTotalDTO.yaml

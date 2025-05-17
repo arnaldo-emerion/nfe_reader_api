@@ -1,0 +1,34 @@
+type: object
+properties:
+  razaoSocial:
+    type: string
+  cpfCnpj:
+    type: string
+  menorCompra:
+    type: number
+    format: double
+  maiorCompra:
+    type: number
+    format: double
+  totalPedidos:
+    type: number
+    format: double
+  valorTotalCompras:
+    type: number
+    format: double
+  valorMedioPedido:
+    type: number
+    format: double
+  dataUltimaCompra:
+    type: string
+    format: date
+  quantidadeMediaItensPorPedido:
+    type: number
+    format: double
+  participacaoCliente:
+    type: number
+    format: double
+  rankingFaturamento:
+    type: integer
+  rankingQtdPedidos:
+    type: integer

@@ -1,32 +1,32 @@
 package br.com.asoft.nfereader.adapters.`in`.rest.mapper
 
-import br.com.asoft.nfereader.model.TotalImpostoNFe
-import br.com.asoft.nfereader.model.TotalImpostoNFeDTO
+import br.com.asoft.nfereader.model.NFeTotalICMS
+import br.com.asoft.nfereader.model.NFeTotalICMSDTO
 
 object TotalImpostoMapper {
-    fun TotalImpostoNFe.toDto() =
-        TotalImpostoNFeDTO(
-            pfcpstret,
-            vbc,
-            vbcst,
-            vcofins,
-            vdesc,
-            vfcp,
-            vfcpstret,
-            vfrete,
-            vicms,
-            vicmsdeson,
-            vicmsufdest,
-            vicmsufremet,
-            vii,
-            vipi,
-            vipidevol,
-            vnf,
-            voutro,
-            vpis,
-            vprod,
-            vst,
-            vseg,
-            vtottrib
+    fun NFeTotalICMS.toDto() =
+        NFeTotalICMSDTO(
+            valorNotaFiscal,
+            valorBaseCalculo,
+            valorIcms,
+            valorBaseCalculoST,
+            valorST,
+            valorProdutos,
+            valorFrete,
+            valorSeguro,
+            valorDesconto,
+            valorImpostoImportacao,
+            valorIpi,
+            valorCofins,
+            valorOutros,
+            valorIcmsDesonerado,
+            valorFcp,
+            valorIcmsUfDestinatario,
+            valorIcmsUfRemetente,
+            valorFcpSTRetido,
+            percentualFcpSTRetido,
+            valorIpiDevolucao,
+            valorTotalTributos,
+            valorPis
         )
 }

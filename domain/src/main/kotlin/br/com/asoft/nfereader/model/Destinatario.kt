@@ -2,7 +2,7 @@ package br.com.asoft.nfereader.model
 
 data class Destinatario(
     val id: Long,
-    val cnpj: String,
+    val cpfCnpj: String,
     val razaoSocial: String,
     val ie: String? = null,
     val uf: String? = null,
@@ -12,7 +12,7 @@ data class Destinatario(
     val cep: String? = null,
     val logradouro: String? = null,
     val numero: String? = null,
-    val cPais: String? = null,
+    val cPais: Long? = null,
     val xPais: String? = null,
-    val indIEDest: String? = null,
+    val indIEDest: Int? = null,
 )

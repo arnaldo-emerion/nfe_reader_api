@@ -5,7 +5,7 @@ import br.com.asoft.nfereader.application.port.`in`.service.DocumentoFiscalServi
 import br.com.asoft.nfereader.application.port.`in`.service.SecurityUtilPort
 import br.com.asoft.nfereader.application.port.`in`.service.UserConfigurationServicePort
 import br.com.asoft.nfereader.controller.TotalImpostoApi
-import br.com.asoft.nfereader.model.TotalImpostoNFeDTO
+import br.com.asoft.nfereader.model.NFeTotalICMSDTO
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
@@ -19,7 +19,7 @@ class ImpostoController(
     override fun getGeneralStatistic(
         startDate: LocalDate?,
         endDate: LocalDate?
-    ): ResponseEntity<TotalImpostoNFeDTO> {
+    ): ResponseEntity<NFeTotalICMSDTO> {
         val totaisImpostos = this.documentoFiscalService.getTotaisImpostos(
             identityId = securityUtil.getIdentityId(),
             startDate = startDate,

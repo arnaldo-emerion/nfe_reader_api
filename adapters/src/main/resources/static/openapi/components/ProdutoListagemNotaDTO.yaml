@@ -1,0 +1,34 @@
+type: object
+properties:
+  id:
+    type: string
+  naturezaOperacao:
+    type: string
+  numeroNotaFiscal:
+    type: string
+  razaoSocial:
+    type: string
+  chaveAcesso:
+    type: string
+  uf:
+    type: string
+  municipio:
+    type: string
+  valorNFe:
+    type: number
+    format: double
+  emissao:
+    type: string
+    format: date
+  cnpjDestinatario:
+    type: string
+  valorUnitario:
+    type: number
+    format: double
+  quantidade:
+    type: integer
+  valorTotal:
+    type: number
+    format: double
+  tipoDocumento:
+    type: string

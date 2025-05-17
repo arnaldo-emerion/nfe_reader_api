@@ -1,0 +1,14 @@
+type: object
+properties:
+  tipoDocumento:
+    type: string
+  codigo:
+    type: string
+  descricao:
+    type: string
+  ean:
+    type: string
+  unidade:
+    type: string
+  ncm:
+    type: string

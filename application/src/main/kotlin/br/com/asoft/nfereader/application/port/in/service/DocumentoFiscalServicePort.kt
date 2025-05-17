@@ -2,8 +2,8 @@ package br.com.asoft.nfereader.application.port.`in`.service
 
 import br.com.asoft.nfereader.model.BasicAXChartInfo
 import br.com.asoft.nfereader.model.DocumentoFiscal
+import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
-import br.com.asoft.nfereader.model.TotalImpostoNFe
 import java.time.LocalDate
 import java.util.Date
 
@@ -44,7 +44,7 @@ interface DocumentoFiscalServicePort {
         startDate: LocalDate?,
         endDate: LocalDate?,
         natOperacaoList: List<String>
-    ): TotalImpostoNFe
+    ): NFeTotalICMS
 
     fun getQtdPedidosDiaADia(
         identityId: String,

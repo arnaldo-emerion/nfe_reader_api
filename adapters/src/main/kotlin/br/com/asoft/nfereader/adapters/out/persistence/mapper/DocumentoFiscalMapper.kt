@@ -23,7 +23,7 @@ object DocumentoFiscalMapper {
         BasicAXChartInfo(name, total)
 
     fun TotalImpostoNFeProjection.toDomain() =
-        TotalImpostoNFe(
+        NFeTotalICMS(
             pfcpstret,
             vbc,
             vbcst,

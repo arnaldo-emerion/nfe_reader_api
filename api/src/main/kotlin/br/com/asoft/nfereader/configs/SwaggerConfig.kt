@@ -10,7 +10,7 @@ class SwaggerConfig(val swaggerApiGroupBuilder: SwaggerApiGroupBuilder) {
     fun apiVersion1(): GroupedOpenApi {
         return swaggerApiGroupBuilder.build(
             "NFe Reader API V1",
-            "static/openapi.yaml"
+            "static/openapi/openapi.yaml"
         )
     }
 }

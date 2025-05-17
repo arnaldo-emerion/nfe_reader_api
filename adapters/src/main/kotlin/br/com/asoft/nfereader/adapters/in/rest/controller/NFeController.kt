@@ -5,6 +5,7 @@ import br.com.asoft.nfereader.application.port.`in`.service.NFeServicePort
 import br.com.asoft.nfereader.application.port.`in`.service.SecurityUtilPort
 import br.com.asoft.nfereader.application.port.`in`.service.UserConfigurationServicePort
 import br.com.asoft.nfereader.controller.NfeApi
+import br.com.asoft.nfereader.model.NFeCompletaDTO
 import br.com.asoft.nfereader.model.ProdutoListagemNotaDTO
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -34,6 +35,14 @@ class NFeController(
             natOperacaoList = userConfigurationService.getNFeProcessaveis()
         )
         return ResponseEntity.ok(list.map { it.toDto() })
+    }
+
+    override fun getByNFeId(id: Long): ResponseEntity<NFeCompletaDTO> {
+        val nFeById = this.nFeServicePort.getNFeById(
+            identityId = securityUtil.getIdentityId(),
+            id = id
+        )
+        return ResponseEntity.ok(nFeById.toDto())
     }
 
 }

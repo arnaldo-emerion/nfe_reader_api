@@ -1,0 +1,34 @@
+type: object
+properties:
+  codigoProduto:
+    type: string
+  ean:
+    type: string
+  nomeProduto:
+    type: string
+  ncm:
+    type: string
+  cfop:
+    type: string
+  unidade:
+    type: string
+  quantidade:
+    type: number
+    format: double
+  valorUnitario:
+    type: number
+    format: double
+  valorTotal:
+    type: number
+    format: double
+  eanTrib:
+    type: number
+    format: double
+  icms:
+    $ref: ./NFeIcmsDTO.yaml
+  ipi:
+    $ref: ./NFeIpiDTO.yaml
+  pis:
+    $ref: ./NFePisDTO.yaml
+  cofins:
+    $ref: ./NFeCofinsDTO.yaml

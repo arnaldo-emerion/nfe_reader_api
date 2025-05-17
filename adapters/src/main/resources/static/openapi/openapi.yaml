@@ -375,7 +375,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BasicValueTotalDTOList'
+                $ref: ./components/BasicTypes.yaml#/BasicValueTotalDTOList
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -397,7 +397,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BasicValueTotalDTOList'
+                $ref: ./components/BasicTypes.yaml#/BasicValueTotalDTOList
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -434,7 +434,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BasicValueTotalDTOList'
+                $ref: ./components/BasicTypes.yaml#/BasicValueTotalDTOList
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -471,7 +471,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BasicValueTotalDTOList'
+                $ref: ./components/BasicTypes.yaml#/BasicValueTotalDTOList
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -487,6 +487,28 @@ paths:
         - curvaAbc
       summary: Under construction
       operationId: getQtdPedidosDiaADia
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PedidosDiaADiaDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /curva-abc/faturamento/diario:
+    get:
+      tags:
+        - dashboard
+      summary: Under construction
+      operationId: getCurvaABCFaturamentoPorDiaEMes
       responses:
         200:
           description: Get analysis result
@@ -552,7 +574,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TotalImpostoNFeDTO'
+                $ref: '#/components/schemas/NFeTotalICMSDTO'
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -611,6 +633,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProdutoListagemNotaDTOList'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /nfe/{id}:
+    get:
+      tags:
+        - nfe
+      summary: Under construction
+      operationId: getByNFeId
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NFeCompletaDTO'
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -695,644 +747,76 @@ components:
         validation:
           type: array
           items:
-            $ref: "#/components/schemas/ValidationErrorInfo"
-
-    DateTime:
-      type: string
-      format: date-time
-      example: "2022-03-01T23:55:23.146+00:00"
-      description: Date used for field
-
-    Identifier:
-      type: string
-      format: uuid
-
-    ValidationErrorInfo:
-      properties:
-        field:
-          type: string
-        message:
-          type: string
-
-    BasicValueTotalDTOList:
-      type: array
-      items:
-        $ref: '#/components/schemas/BasicValueTotalDTO'
-
-    BasicValueTotalDTO:
-      type: object
-      properties:
-        label:
-          type: string
-        total:
-          type: number
-          format: double
+            $ref: ./components/BasicTypes.yaml#/ValidationErrorInfo
 
     NFeDTO:
-      type: object
-      properties:
-        nnf:
-          type: string
-        emitente:
-          $ref: '#/components/schemas/NFeEmitDTO'
-        destinatario:
-          $ref: '#/components/schemas/NFeDestDTO'
-        itens:
-          type: array
-          items:
-            $ref: '#/components/schemas/NFeProdDTO'
-        totais:
-          $ref: '#/components/schemas/NFeTotalDTO'
-
-    NFeEmitDTO:
-      type: object
-      properties:
-        cnpj:
-          type: string
-        nome:
-          type: string
-        nomeFantasia:
-          type: string
-        endereco:
-          $ref: '#/components/schemas/NFeEnderecoDTO'
-
-    NFeDestDTO:
-      type: object
-      properties:
-        cnpj:
-          type: string
-        nome:
-          type: string
-        endereco:
-          $ref: '#/components/schemas/NFeEnderecoDTO'
-        ie:
-          type: string
-
-    NFeTotalDTO:
-      type: object
-      properties:
-        baseCalculo:
-          type: number
-          format: double
-        valorIcms:
-          type: number
-          format: double
-        baseCalculoST:
-          type: number
-          format: double
-        valorST:
-          type: number
-          format: double
-        valorProduto:
-          type: number
-          format: double
-        valorFrete:
-          type: number
-          format: double
-        valorSeguro:
-          type: number
-          format: double
-        valorDesconto:
-          type: number
-          format: double
-        valorImpostoImportacao:
-          type: number
-          format: double
-        valorIpi:
-          type: number
-          format: double
-        valorPis:
-          type: number
-          format: double
-        valorCofins:
-          type: number
-          format: double
-        valorOutros:
-          type: number
-          format: double
-        valorNFe:
-          type: number
-          format: double
-
-    NFeEnderecoDTO:
-      type: object
-      properties:
-        logradouro:
-          type: string
-        numero:
-          type: string
-        bairro:
-          type: string
-        codigoMunicipio:
-          type: string
-        nomeMunicipio:
-          type: string
-        uf:
-          type: string
-        cep:
-          type: string
-        numeroPais:
-          type: string
-        nomePais:
-          type: string
-        fone:
-          type: string
-
-    NFeProdDTO:
-      type: object
-      properties:
-        codigoProduto:
-          type: string
-        ean:
-          type: string
-        nomeProduto:
-          type: string
-        ncm:
-          type: string
-        cfop:
-          type: string
-        unidade:
-          type: string
-        quantidade:
-          type: number
-          format: double
-        valorUnitario:
-          type: number
-          format: double
-        valorTotal:
-          type: number
-          format: double
-        eanTrib:
-          type: number
-          format: double
-        icms:
-          $ref: '#/components/schemas/NFeIcmsDTO'
-        ipi:
-          $ref: '#/components/schemas/NFeIpiDTO'
-        pis:
-          $ref: '#/components/schemas/NFePisDTO'
-        cofins:
-          $ref: '#/components/schemas/NFeCofinsDTO'
-
-    NFeIcmsDTO:
-      type: object
-      properties:
-        origem:
-          type: string
-        cst:
-          type: string
-        modBaseCalculo:
-          type: number
-          format: double
-        valorBaseCalculo:
-          type: number
-          format: double
-        percentualIcms:
-          type: number
-          format: double
-        valorICMS:
-          type: number
-          format: double
-        modBaseCalculoST:
-          type: number
-          format: double
-        percentualMvaST:
-          type: number
-          format: double
-        valorBaseCalculoST:
-          type: number
-          format: double
-        percentualIcmsST:
-          type: number
-          format: double
-        valorIcmsST:
-          type: number
-          format: double
-
-    NFeIpiDTO:
-      type: object
-      properties:
-        cst:
-          type: string
-        baseCalculo:
-          type: number
-          format: double
-        percentual:
-          type: number
-          format: double
-        valor:
-          type: number
-          format: double
-
-    NFePisDTO:
-      type: object
-      properties:
-        cst:
-          type: string
-        baseCalculo:
-          type: number
-          format: double
-        percentual:
-          type: number
-          format: double
-        valor:
-          type: number
-          format: double
-
-    NFeCofinsDTO:
-      type: object
-      properties:
-        cst:
-          type: string
-        baseCalculo:
-          type: number
-          format: double
-        percentual:
-          type: number
-          format: double
-        valor:
-          type: number
-          format: double
+      $ref: ./components/NFeDTO.yaml
 
     DocumentoFiscalListagemDTO:
-      type: object
-      properties:
-        identificador:
-          type: string
-        numeroDocumento:
-          type: string
-        razaoSocial:
-          type: string
-        naturezaOperacao:
-          type: string
-        chaveAcesso:
-          type: string
-        emissao:
-          $ref: '#/components/schemas/DateTime'
-        tipoDocumento:
-          enum:
-            - NOTA_FISCAL
-            - CUPOM_FISCAL
+      $ref: ./components/DocumentoFiscalListagemDTO.yaml
 
     AnaliseQualitativaClienteDTOList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AnaliseQualitativaClienteDTO'
+      $ref: ./components/AnaliseQualitativaClienteDTOList.yaml
 
     AnaliseQualitativaClienteDTO:
-      type: object
-      properties:
-        cnpj:
-          type: string
-        razaoSocial:
-          type: string
-        sum:
-          type: number
-          format: double
-        min:
-          type: number
-          format: double
-        max:
-          type: number
-          format: double
-        avg:
-          type: number
-          format: double
-        count:
-          type: number
-          format: double
-        tipoDocumento:
-          type: string
+      $ref: ./components/AnaliseQualitativaClienteDTO.yaml
 
     ProdutoCurvaABCDTOList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProdutoCurvaABCDTO'
+      $ref: ./components/ProdutoCurvaABCDTOList.yaml
 
     ProdutoCurvaABCDTO:
-      type: object
-      properties:
-        id:
-          type: integer
-        codigo:
-          type: string
-        descricao:
-          type: string
-        volume:
-          type: number
-          format: double
-        faturamento:
-          type: number
-          format: double
-        frequencia:
-          type: number
-          format: double
-        precoMedio:
-          type: number
-          format: double
-        ticketMedio:
-          type: number
-          format: double
-        unidade:
-          type: string
-        ncm:
-          type: string
-        tipoDocumento:
-          type: string
-        partVolume:
-          type: number
-          format: double
-        partFaturamento:
-          type: number
-          format: double
-        partFrequencia:
-          type: number
-          format: double
+      $ref: ./components/ProdutoCurvaABCDTO.yaml
 
     TransportadoraCabecalhoDTOList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TransportadoraCabecalhoDTO'
+      $ref: ./components/TransportadoraCabecalhoDTOList.yaml
 
-    TransportadoraCabecalhoDTO:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        cnpj:
-          type: string
-        ie:
-          type: string
-        municipio:
-          type: string
-        uf:
-          type: string
-        razaoSocial:
-          type: string
+    TransportadoraDTO:
+      $ref: ./components/TransportadoraDTO.yaml
 
     ProdutoDTOList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProdutoDTO'
+      $ref: ./components/ProdutoDTOList.yaml
 
     ProdutoDTO:
-      type: object
-      properties:
-        tipoDocumento:
-          type: string
-        codigo:
-          type: string
-        descricao:
-          type: string
-        ean:
-          type: string
-        unidade:
-          type: string
-        ncm:
-          type: string
+      $ref: ./components/ProdutoDTO.yaml
 
     DestinatarioCabecalhoDTOList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DestinatarioCabecalhoDTO'
+      $ref: ./components/DestinatarioCabecalhoDTOList.yaml
 
     DestinatarioCabecalhoDTO:
-      type: object
-      properties:
-        tipoDocumento:
-          type: string
-        id:
-          type: integer
-          format: int64
-        nome:
-          type: string
-        cnpj:
-          type: string
-        uf:
-          type: string
-        municipio:
-          type: string
-        telefone:
-          type: string
-        cep:
-          type: string
+      $ref: ./components/DestinatarioCabecalhoDTO.yaml
 
     DestinatarioDTO:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        cnpj:
-          type: string
-        razaoSocial:
-          type: string
-        ie:
-          type: string
-        uf:
-          type: string
-        municipio:
-          type: string
-        bairro:
-          type: string
-        telefone:
-          type: string
-        cep:
-          type: string
-        logradouro:
-          type: string
-        numero:
-          type: string
-        cPais:
-          type: string
-        xPais:
-          type: string
-        indIEDest:
-          type: string
+      $ref: ./components/DestinatarioDTO.yaml
 
     ConfiguracaoGeralDTO:
-      type: object
-      properties:
-        qtdMaxNFe:
-          type: integer
-
-    TotalImpostoNFeDTO:
-      type: object
-      properties:
-        pfcpstret:
-          type: number
-          format: double
-        vbc:
-          type: number
-          format: double
-        vbcst:
-          type: number
-          format: double
-        vcofins:
-          type: number
-          format: double
-        vdesc:
-          type: number
-          format: double
-        vfcp:
-          type: number
-          format: double
-        vfcpstret:
-          type: number
-          format: double
-        vfrete:
-          type: number
-          format: double
-        vicms:
-          type: number
-          format: double
-        vicmsdeson:
-          type: number
-          format: double
-        vicmsufdest:
-          type: number
-          format: double
-        vicmsufremet:
-          type: number
-          format: double
-        vii:
-          type: number
-          format: double
-        vipi:
-          type: number
-          format: double
-        vipidevol:
-          type: number
-          format: double
-        vnf:
-          type: number
-          format: double
-        voutro:
-          type: number
-          format: double
-        vpis:
-          type: number
-          format: double
-        vprod:
-          type: number
-          format: double
-        vst:
-          type: number
-          format: double
-        vseg:
-          type: number
-          format: double
-        vtottrib:
-          type: number
-          format: double
+      $ref: ./components/ConfiguracaoGeralDTO.yaml
 
     PedidosDiaADiaDTOList:
-      type: array
-      items:
-        $ref: '#/components/schemas/PedidosDiaADiaDTO'
+      $ref: ./components/PedidosDiaADiaDTOList.yaml
 
     PedidosDiaADiaDTO:
-      type: object
-      properties:
-        dataEmissao:
-          type: string
-          format: date
-        total:
-          type: number
-          format: double
+      $ref: ./components/PedidosDiaADiaDTO.yaml
 
     ProdutoListagemNotaDTOList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProdutoListagemNotaDTO'
+      $ref: ./components/ProdutoListagemNotaDTOList.yaml
 
     ProdutoListagemNotaDTO:
-      type: object
-      properties:
-        id:
-          type: string
-        naturezaOperacao:
-          type: string
-        numeroNotaFiscal:
-          type: string
-        razaoSocial:
-          type: string
-        chaveAcesso:
-          type: string
-        uf:
-          type: string
-        municipio:
-          type: string
-        valorNFe:
-          type: number
-          format: double
-        emissao:
-          type: string
-          format: date
-        cnpjDestinatario:
-          type: string
-        valorUnitario:
-          type: number
-          format: double
-        quantidade:
-          type: integer
-        valorTotal:
-          type: number
-          format: double
-        tipoDocumento:
-          type: string
+      $ref: ./components/ProdutoListagemNotaDTO.yaml
 
     EstatisticaDestinatarioDTO:
-      type: object
-      properties:
-        razaoSocial:
-          type: string
-        cpfCnpj:
-          type: string
-        menorCompra:
-          type: number
-          format: double
-        maiorCompra:
-          type: number
-          format: double
-        totalPedidos:
-          type: number
-          format: double
-        valorTotalCompras:
-          type: number
-          format: double
-        valorMedioPedido:
-          type: number
-          format: double
-        dataUltimaCompra:
-          type: string
-          format: date
-        quantidadeMediaItensPorPedido:
-          type: number
-          format: double
-        participacaoCliente:
-          type: number
-          format: double
-        rankingFaturamento:
-          type: integer
-        rankingQtdPedidos:
-          type: integer
+      $ref: ./components/EstatisticaDestinatarioDTO.yaml
+
     AnalisysTotalDTO:
-      type: object
-      properties:
-        totalNotasProcessadas:
-          type: number
-          format: double
-        totalCupomFiscalProcessados:
-          type: number
-          format: double
-        clienteCount:
-          type: number
-          format: double
-        produtoCount:
-          type: number
-          format: double
-        valorTotalProcessado:
-          type: number
-          format: double
+      $ref: ./components/AnalisysTotalDTO.yaml
+
+    NFeCompletaDTO:
+      $ref: ./components/NFeCompletaDTO.yaml
+
+    EmitenteDTO:
+      $ref: ./components/EmitenteDTO.yaml
+
+    NFeTotalICMSDTO:
+      $ref: ./components/NFeTotalICMSDTO.yaml
+
+    NFeItemDTO:
+      $ref: ./components/NFeItemDTO.yaml

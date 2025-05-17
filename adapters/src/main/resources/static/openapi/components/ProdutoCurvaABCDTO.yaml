@@ -1,0 +1,38 @@
+type: object
+properties:
+  id:
+    type: integer
+  codigo:
+    type: string
+  descricao:
+    type: string
+  volume:
+    type: number
+    format: double
+  faturamento:
+    type: number
+    format: double
+  frequencia:
+    type: number
+    format: double
+  precoMedio:
+    type: number
+    format: double
+  ticketMedio:
+    type: number
+    format: double
+  unidade:
+    type: string
+  ncm:
+    type: string
+  tipoDocumento:
+    type: string
+  partVolume:
+    type: number
+    format: double
+  partFaturamento:
+    type: number
+    format: double
+  partFrequencia:
+    type: number
+    format: double

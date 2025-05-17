@@ -1,6 +1,8 @@
 package br.com.asoft.nfereader.application.port.`in`.service
 
 import br.com.asoft.nfereader.model.AnalisysTotal
+import br.com.asoft.nfereader.model.NFeCompleta
+import br.com.asoft.nfereader.model.PedidosDiaADia
 import br.com.asoft.nfereader.model.ProdutoListagemNota
 
 interface NFeServicePort {
@@ -14,4 +16,12 @@ interface NFeServicePort {
         identityId: String,
         natOperacaoList: List<String>
     ): AnalisysTotal
+    fun getFaturamentoDiaADia(
+        identityId: String,
+        natOperacaoList: List<String>
+    ): List<PedidosDiaADia>
+    fun getNFeById(
+        identityId: String,
+        id: Long,
+    ): NFeCompleta
 }

@@ -3,6 +3,8 @@ package br.com.asoft.nfereader.application.service
 import br.com.asoft.nfereader.application.port.`in`.service.NFeServicePort
 import br.com.asoft.nfereader.application.port.out.persistence.NFePersistencePort
 import br.com.asoft.nfereader.model.AnalisysTotal
+import br.com.asoft.nfereader.model.NFeCompleta
+import br.com.asoft.nfereader.model.PedidosDiaADia
 import br.com.asoft.nfereader.model.ProdutoListagemNota
 import org.springframework.stereotype.Service
 
@@ -24,6 +26,20 @@ class NFeService(private val nFePersistencePort: NFePersistencePort) : NFeServic
         return this.nFePersistencePort.getAllTotals(
             identityId = identityId,
             natOperacaoList = natOperacaoList
+        )
+    }
+
+    override fun getFaturamentoDiaADia(identityId: String, natOperacaoList: List<String>): List<PedidosDiaADia> {
+        return this.nFePersistencePort.getFaturamentoDiaADia(
+            identityId = identityId,
+            natOperacaoList = natOperacaoList
+        )
+    }
+
+    override fun getNFeById(identityId: String, id: Long): NFeCompleta {
+        return this.nFePersistencePort.getNFeById(
+            identityId = identityId,
+            id = id
         )
     }
 }
