@@ -745,11 +745,33 @@ paths:
       operationId: getDashBoardBasicInfo
       responses:
         200:
-          description: Get analysis result
+          description: Get all the emitents
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalisysTotalDTO'
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /emitente:
+    get:
+      tags:
+        - dashboard
+      summary: Under construction
+      operationId: getAllEmitent
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmitenteDTOList'
         400:
           $ref: "#/components/responses/BadRequest"
         401:
@@ -874,8 +896,8 @@ components:
     NFeCompletaDTO:
       $ref: ./components/NFeCompletaDTO.yaml
 
-    EmitenteDTO:
-      $ref: ./components/EmitenteDTO.yaml
+    EmitenteDTOList:
+      $ref: ./components/EmitenteDTOList.yaml
 
     NFeTotalICMSDTO:
       $ref: ./components/NFeTotalICMSDTO.yaml
