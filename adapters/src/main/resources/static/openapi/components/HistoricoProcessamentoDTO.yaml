@@ -1,0 +1,11 @@
+type: object
+properties:
+  nomeArquivo:
+    type: string
+  dataProcessamento:
+    type: string
+    format: date
+  processadaCorretamente:
+    type: boolean
+  motivo:
+    type: string

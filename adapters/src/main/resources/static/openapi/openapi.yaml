@@ -547,6 +547,52 @@ paths:
         500:
           $ref: '#/components/responses/InternalServerError'
 
+  /configuracao-usuario/tipos-disponiveis:
+    get:
+      tags:
+        - userConfiguration
+      summary: Under construction
+      operationId: getTiposDisponiveisNFe
+      responses:
+        200:
+          description: get all kind of configs available
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /historico-processamento/erros:
+    get:
+      tags:
+        - userConfiguration
+      summary: Under construction
+      operationId: getAllErros
+      responses:
+        200:
+          description: get all errors
+          content:
+            application/json:
+              schema:
+                $ref: ./components/HistoricoProcessamentoDTOList.yaml
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
   /total-imposto:
     get:
       tags:
