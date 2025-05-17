@@ -1,6 +1,6 @@
 package br.com.asoft.nfereader.adapters.out.persistence.model.projection
 
-import java.util.Date
+import java.time.LocalDate
 
 interface DocumentoFiscalHeaderProjection {
     val tipoDocumento: String
@@ -10,7 +10,7 @@ interface DocumentoFiscalHeaderProjection {
     val razaoSocial: String
     val chNFe: String
     val uf: String
-    val dhEmi: Date
+    val dhEmi: LocalDate
     val vnf: Double
     val totalPedidos: Int
     val cnpjDest: String

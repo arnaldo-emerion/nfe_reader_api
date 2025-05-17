@@ -1,7 +1,7 @@
 package br.com.asoft.nfereader.application.port.out.persistence
 
 import br.com.asoft.nfereader.model.BasicAXChartInfo
-import br.com.asoft.nfereader.model.DocumentoFiscal
+import br.com.asoft.nfereader.model.DocumentoFiscalHeader
 import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
 import java.time.LocalDate
@@ -10,10 +10,10 @@ import java.util.Date
 interface DocumentoFiscalPersistencePort {
     fun getDocumentoFiscalHeader(
         identityId: String,
-        startDate: Date?,
-        endDate: Date?,
+        startDate: LocalDate?,
+        endDate: LocalDate?,
         natOperacaoList: List<String>
-    ): List<DocumentoFiscal>
+    ): List<DocumentoFiscalHeader>
 
     fun getFaturamentoAnualGroupedByYear(
         identityId: String,

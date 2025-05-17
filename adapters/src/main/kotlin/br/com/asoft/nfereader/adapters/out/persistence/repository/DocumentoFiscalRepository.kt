@@ -63,8 +63,8 @@ interface DocumentoFiscalRepository : PagingAndSortingRepository<NFeEntity, Long
     )
     fun getDocumentoFiscalHeader(
         @Param("identityId") identityId: String,
-        @Param("startDate") startDate: Date?,
-        @Param("endDate") endDate: Date?,
+        @Param("startDate") startDate: LocalDate?,
+        @Param("endDate") endDate: LocalDate?,
         @Param("natOperacaoList") natOperacaoList: List<String>
     ): MutableList<DocumentoFiscalHeaderProjection>
 

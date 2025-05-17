@@ -3,7 +3,7 @@ package br.com.asoft.nfereader.adapters.`in`.rest.controller
 import br.com.asoft.nfereader.application.port.`in`.service.DocumentoFiscalServicePort
 import br.com.asoft.nfereader.application.port.`in`.service.SecurityUtilPort
 import br.com.asoft.nfereader.application.port.`in`.service.UserConfigurationServicePort
-import br.com.asoft.nfereader.model.DocumentoFiscal
+import br.com.asoft.nfereader.model.DocumentoFiscalHeader
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -16,7 +16,7 @@ class DocumentoFiscalController(
     private val securityUtil: SecurityUtilPort
 ) {
     @GetMapping("cabecalho")
-    fun getAllCabecalho(): List<DocumentoFiscal> {
+    fun getAllCabecalho(): List<DocumentoFiscalHeader> {
         return documentoFiscalService.getDocumentoFiscalHeader(
             securityUtil.getIdentityId(),
             null,

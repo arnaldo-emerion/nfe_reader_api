@@ -4,7 +4,7 @@ import br.com.asoft.nfereader.adapters.out.persistence.mapper.DocumentoFiscalMap
 import br.com.asoft.nfereader.adapters.out.persistence.repository.DocumentoFiscalRepository
 import br.com.asoft.nfereader.application.port.out.persistence.DocumentoFiscalPersistencePort
 import br.com.asoft.nfereader.model.BasicAXChartInfo
-import br.com.asoft.nfereader.model.DocumentoFiscal
+import br.com.asoft.nfereader.model.DocumentoFiscalHeader
 import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
 import org.springframework.stereotype.Service
@@ -17,10 +17,10 @@ class DocumentoFiscalPersistenceAdapter(
 ) : DocumentoFiscalPersistencePort {
     override fun getDocumentoFiscalHeader(
         identityId: String,
-        startDate: Date?,
-        endDate: Date?,
+        startDate: LocalDate?,
+        endDate: LocalDate?,
         natOperacaoList: List<String>
-    ): List<DocumentoFiscal> {
+    ): List<DocumentoFiscalHeader> {
         return this.documentoFiscalRepository.getDocumentoFiscalHeader(
             identityId = identityId,
             startDate = startDate,

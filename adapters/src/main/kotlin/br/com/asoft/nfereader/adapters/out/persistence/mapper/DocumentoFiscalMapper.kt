@@ -4,8 +4,24 @@ import br.com.asoft.nfereader.adapters.out.persistence.model.projection.*
 import br.com.asoft.nfereader.model.*
 
 object DocumentoFiscalMapper {
+
+    fun DocumentoFiscalHeader.toDto() =
+        DocumentoFiscalHeaderDTO(
+            tipoDocumento = DocumentoFiscalHeaderDTO.TipoDocumento.valueOf(this.tipoDocumento),
+            id = this.id,
+            naturezaOperacao = this.natOp,
+            numeroDocumento = this.nnf,
+            razaoSocial = this.razaoSocial,
+            chaveAcesso = this.chNFe,
+            uf = this.uf,
+            emissao = this.dhEmi,
+            valorNotaFiscal = this.vnf,
+            totalPedidos = this.totalPedidos,
+            cpfCnpjDestinatario = this.cnpjDest
+        )
+
     fun DocumentoFiscalHeaderProjection.toDomain() =
-        DocumentoFiscal(
+        DocumentoFiscalHeader(
             tipoDocumento = this.tipoDocumento,
             id = this.id,
             natOp = this.natOp,

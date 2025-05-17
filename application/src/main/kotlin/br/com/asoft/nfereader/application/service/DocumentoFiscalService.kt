@@ -3,7 +3,7 @@ package br.com.asoft.nfereader.application.service
 import br.com.asoft.nfereader.application.port.`in`.service.DocumentoFiscalServicePort
 import br.com.asoft.nfereader.application.port.out.persistence.DocumentoFiscalPersistencePort
 import br.com.asoft.nfereader.model.BasicAXChartInfo
-import br.com.asoft.nfereader.model.DocumentoFiscal
+import br.com.asoft.nfereader.model.DocumentoFiscalHeader
 import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
 import org.springframework.stereotype.Service
@@ -15,10 +15,10 @@ class DocumentoFiscalService(private val documentoFiscalPersistence: DocumentoFi
     DocumentoFiscalServicePort {
     override fun getDocumentoFiscalHeader(
         identityId: String,
-        startDate: Date?,
-        endDate: Date?,
+        startDate: LocalDate?,
+        endDate: LocalDate?,
         natOperacaoList: List<String>
-    ): List<DocumentoFiscal> {
+    ): List<DocumentoFiscalHeader> {
         return this.documentoFiscalPersistence.getDocumentoFiscalHeader(
             identityId = identityId,
             startDate = startDate,

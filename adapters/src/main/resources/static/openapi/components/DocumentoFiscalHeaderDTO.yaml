@@ -1,0 +1,29 @@
+type: object
+properties:
+  tipoDocumento:
+    enum:
+      - NOTA_FISCAL
+      - CUPOM_FISCAL
+  id:
+    type: integer
+    format: int64
+  naturezaOperacao:
+    type: string
+  numeroDocumento:
+    type: string
+  razaoSocial:
+    type: string
+  chaveAcesso:
+    type: string
+  uf:
+    type: string
+  emissao:
+    type: string
+    format: date
+  valorNotaFiscal:
+    type: number
+    format: double
+  totalPedidos:
+    type: integer
+  cpfCnpjDestinatario:
+    type: string

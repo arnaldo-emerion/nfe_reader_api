@@ -672,6 +672,71 @@ paths:
         500:
           $ref: '#/components/responses/InternalServerError'
 
+  /documento-fiscal/cabecalho:
+    get:
+      tags:
+        - nfe
+      summary: Under construction
+      operationId: getAllDocumentoFiscalHeader
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: ./components/DocumentoFiscalHeaderListDTO.yaml
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /documento-fiscal/cabecalho/{startDate}/{endtDate}/{estado}:
+    get:
+      tags:
+        - nfe
+      summary: Under construction
+      operationId: getAllDocumentoFiscalHeaderFiltered
+      parameters:
+        - name: startDate
+          in: path
+          description: startDate
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: endtDate
+          in: path
+          description: endtDate
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: estado
+          in: path
+          description: estado
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Get analysis result
+          content:
+            application/json:
+              schema:
+                $ref: ./components/DocumentoFiscalHeaderListDTO.yaml
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
   /dashboard:
     get:
       tags:
@@ -751,9 +816,6 @@ components:
 
     NFeDTO:
       $ref: ./components/NFeDTO.yaml
-
-    DocumentoFiscalListagemDTO:
-      $ref: ./components/DocumentoFiscalListagemDTO.yaml
 
     AnaliseQualitativaClienteDTOList:
       $ref: ./components/AnaliseQualitativaClienteDTOList.yaml
