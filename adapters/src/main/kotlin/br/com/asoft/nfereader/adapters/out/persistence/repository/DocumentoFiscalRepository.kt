@@ -18,6 +18,20 @@ interface DocumentoFiscalRepository : PagingAndSortingRepository<NFeEntity, Long
     @Query(
         nativeQuery = true,
         value = """
+            SELECT SUM(count_total) AS total_records
+                FROM (
+                    SELECT COUNT(1) AS count_total FROM nfe_reader.nfe nfe
+                    where ( cast(:identityId as varchar(64)) is null or nfe.user_create = cast(:identityId as varchar(64)))
+                    UNION ALL
+                    SELECT COUNT(1) FROM nfe_reader.cupom_fiscal_model cf
+                    where ( cast(:identityId as varchar(64)) is null or cf.user_create = cast(:identityId as varchar(64)))
+                ) AS counts;
+        """)
+    fun countByUserCreate(@Param("identityId") identityId: String): Long
+
+    @Query(
+        nativeQuery = true,
+        value = """
             select distinct
                 'NOTA_FISCAL' as tipoDocumento,
                 nfe.id,

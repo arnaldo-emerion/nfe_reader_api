@@ -571,6 +571,51 @@ paths:
         500:
           $ref: '#/components/responses/InternalServerError'
 
+  /configuracao-usuario:
+    get:
+      tags:
+        - userConfiguration
+      summary: Under construction
+      operationId: getUserConfiguration
+      responses:
+        200:
+          description: get all kind of configs available
+          content:
+            application/json:
+              schema:
+                $ref: ./components/UserConfigurationDTO.yaml
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /configuracao-usuario/estatistica-registros:
+    get:
+      tags:
+        - userConfiguration
+      summary: Under construction
+      operationId: getEstatiticasUtilizacao
+      responses:
+        200:
+          description: get all kind of configs available
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
   /historico-processamento/erros:
     get:
       tags:

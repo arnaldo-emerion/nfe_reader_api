@@ -98,4 +98,8 @@ class DocumentoFiscalPersistenceAdapter(
             natOperacaoList = natOperacaoList
         ).map { it.toDomain() }
     }
+
+    override fun countByUserCreate(userCreate: String): Long {
+        return this.documentoFiscalRepository.countByUserCreate(userCreate)
+    }
 }

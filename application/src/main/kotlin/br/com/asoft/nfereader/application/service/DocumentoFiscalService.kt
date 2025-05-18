@@ -97,4 +97,8 @@ class DocumentoFiscalService(private val documentoFiscalPersistence: DocumentoFi
             natOperacaoList = natOperacaoList
         )
     }
+
+    override fun countByUserCreate(userCreate: String): Long {
+        return this.documentoFiscalPersistence.countByUserCreate(userCreate)
+    }
 }

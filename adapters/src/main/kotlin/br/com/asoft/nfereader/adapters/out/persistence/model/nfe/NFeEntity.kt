@@ -17,6 +17,7 @@ import java.util.Date
 
 @Entity
 @Table(
+    name = "nfe",
     indexes = [Index(
         name = "nfe_user_create_index",
         columnList = "userCreate"

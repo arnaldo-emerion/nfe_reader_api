@@ -5,7 +5,6 @@ import br.com.asoft.nfereader.model.DocumentoFiscalHeader
 import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
 import java.time.LocalDate
-import java.util.Date
 
 interface DocumentoFiscalServicePort {
     fun getDocumentoFiscalHeader(
@@ -50,4 +49,6 @@ interface DocumentoFiscalServicePort {
         identityId: String,
         natOperacaoList: List<String>
     ): List<PedidosDiaADia>
+
+    fun countByUserCreate(userCreate: String): Long
 }

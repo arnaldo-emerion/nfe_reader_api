@@ -50,4 +50,6 @@ interface DocumentoFiscalPersistencePort {
         identityId: String,
         natOperacaoList: List<String>
     ): List<PedidosDiaADia>
+
+    fun countByUserCreate(userCreate: String): Long
 }
