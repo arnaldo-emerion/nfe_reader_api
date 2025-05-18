@@ -69,5 +69,17 @@ object DocumentoFiscalMapper {
 
     fun TotaisEstatisticaProdutoProjection.toDomain() =
         TotaisEstatisticaProduto(volume, faturamento, frequencia)
+
+    fun TotalRecordsProjection.toDomain() =
+        TotalRecords(
+            nfeCount = nfeCount,
+            cupomCount = cupomCount
+        )
+
+    fun TotalRecords.toDto() =
+        TotalRecordsDTO(
+            nfeCount = nfeCount,
+            cupomCount = cupomCount
+        )
 }
 

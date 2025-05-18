@@ -1,0 +1,8 @@
+type: object
+properties:
+  nfeCount:
+    type: integer
+    format: int64
+  cupomCount:
+    type: integer
+    format: int64

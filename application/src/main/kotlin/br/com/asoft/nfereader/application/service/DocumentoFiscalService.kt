@@ -6,9 +6,9 @@ import br.com.asoft.nfereader.model.BasicAXChartInfo
 import br.com.asoft.nfereader.model.DocumentoFiscalHeader
 import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
+import br.com.asoft.nfereader.model.TotalRecords
 import org.springframework.stereotype.Service
 import java.time.LocalDate
-import java.util.Date
 
 @Service
 class DocumentoFiscalService(private val documentoFiscalPersistence: DocumentoFiscalPersistencePort) :
@@ -98,7 +98,7 @@ class DocumentoFiscalService(private val documentoFiscalPersistence: DocumentoFi
         )
     }
 
-    override fun countByUserCreate(userCreate: String): Long {
+    override fun countByUserCreate(userCreate: String): TotalRecords {
         return this.documentoFiscalPersistence.countByUserCreate(userCreate)
     }
 }

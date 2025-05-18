@@ -7,9 +7,9 @@ import br.com.asoft.nfereader.model.BasicAXChartInfo
 import br.com.asoft.nfereader.model.DocumentoFiscalHeader
 import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
+import br.com.asoft.nfereader.model.TotalRecords
 import org.springframework.stereotype.Service
 import java.time.LocalDate
-import java.util.Date
 
 @Service
 class DocumentoFiscalPersistenceAdapter(
@@ -99,7 +99,7 @@ class DocumentoFiscalPersistenceAdapter(
         ).map { it.toDomain() }
     }
 
-    override fun countByUserCreate(userCreate: String): Long {
-        return this.documentoFiscalRepository.countByUserCreate(userCreate)
+    override fun countByUserCreate(userCreate: String): TotalRecords {
+        return this.documentoFiscalRepository.countByUserCreate(userCreate).toDomain()
     }
 }

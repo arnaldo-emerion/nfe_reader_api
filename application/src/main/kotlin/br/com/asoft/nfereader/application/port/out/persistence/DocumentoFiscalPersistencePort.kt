@@ -4,6 +4,7 @@ import br.com.asoft.nfereader.model.BasicAXChartInfo
 import br.com.asoft.nfereader.model.DocumentoFiscalHeader
 import br.com.asoft.nfereader.model.NFeTotalICMS
 import br.com.asoft.nfereader.model.PedidosDiaADia
+import br.com.asoft.nfereader.model.TotalRecords
 import java.time.LocalDate
 import java.util.Date
 
@@ -51,5 +52,5 @@ interface DocumentoFiscalPersistencePort {
         natOperacaoList: List<String>
     ): List<PedidosDiaADia>
 
-    fun countByUserCreate(userCreate: String): Long
+    fun countByUserCreate(userCreate: String): TotalRecords
 }

@@ -5,6 +5,7 @@ import br.com.asoft.nfereader.adapters.out.persistence.model.projection.BasicAXC
 import br.com.asoft.nfereader.adapters.out.persistence.model.projection.DocumentoFiscalHeaderProjection
 import br.com.asoft.nfereader.adapters.out.persistence.model.projection.PedidosDiaADiaProjection
 import br.com.asoft.nfereader.adapters.out.persistence.model.projection.TotalImpostoNFeProjection
+import br.com.asoft.nfereader.adapters.out.persistence.model.projection.TotalRecordsProjection
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
@@ -17,17 +18,19 @@ interface DocumentoFiscalRepository : PagingAndSortingRepository<NFeEntity, Long
 
     @Query(
         nativeQuery = true,
-        value = """
-            SELECT SUM(count_total) AS total_records
-                FROM (
-                    SELECT COUNT(1) AS count_total FROM nfe_reader.nfe nfe
-                    where ( cast(:identityId as varchar(64)) is null or nfe.user_create = cast(:identityId as varchar(64)))
-                    UNION ALL
-                    SELECT COUNT(1) FROM nfe_reader.cupom_fiscal_model cf
-                    where ( cast(:identityId as varchar(64)) is null or cf.user_create = cast(:identityId as varchar(64)))
-                ) AS counts;
+        value = """           
+            SELECT
+                (SELECT COUNT(1)
+                 FROM nfe_reader.nfe nfe
+                 WHERE (:identityId IS NULL OR nfe.user_create = CAST(:identityId AS VARCHAR(64)))
+                ) AS nfeCount,
+                
+                (SELECT COUNT(1)
+                 FROM nfe_reader.cupom_fiscal_model cf
+                 WHERE (:identityId IS NULL OR cf.user_create = CAST(:identityId AS VARCHAR(64)))
+                ) AS cupomCount;
         """)
-    fun countByUserCreate(@Param("identityId") identityId: String): Long
+    fun countByUserCreate(@Param("identityId") identityId: String): TotalRecordsProjection
 
     @Query(
         nativeQuery = true,
