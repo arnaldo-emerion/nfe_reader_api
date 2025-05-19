@@ -1,6 +1,7 @@
 package br.com.asoft.nfereader.adapters.`in`.rest.controller
 
 import br.com.asoft.nfereader.adapters.out.persistence.mapper.NFeMapper.toDto
+import br.com.asoft.nfereader.application.port.`in`.service.NFeItemServicePort
 import br.com.asoft.nfereader.application.port.`in`.service.NFeServicePort
 import br.com.asoft.nfereader.application.port.`in`.service.SecurityUtilPort
 import br.com.asoft.nfereader.application.port.`in`.service.UserConfigurationServicePort
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class NFeController(
     private val nFeServicePort: NFeServicePort,
+    private val nFeItemServicePort: NFeItemServicePort,
     private val securityUtil: SecurityUtilPort,
     private val userConfigurationService: UserConfigurationServicePort,
 ) : NfeApi {
@@ -42,7 +44,8 @@ class NFeController(
             identityId = securityUtil.getIdentityId(),
             id = id
         )
-        return ResponseEntity.ok(nFeById.toDto())
+        val itemList = this.nFeItemServicePort.findByNfeId(identityId = securityUtil.getIdentityId(), nfeId = id)
+        return ResponseEntity.ok(nFeById.toDto(itemList))
     }
 
 }

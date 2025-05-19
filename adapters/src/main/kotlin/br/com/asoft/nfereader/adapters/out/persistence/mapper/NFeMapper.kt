@@ -1,5 +1,6 @@
 package br.com.asoft.nfereader.adapters.out.persistence.mapper
 
+import br.com.asoft.nfereader.adapters.out.persistence.mapper.NFeItemMapper.toDTO
 import br.com.asoft.nfereader.adapters.out.persistence.model.projection.AnalisysTotalProjection
 import br.com.asoft.nfereader.adapters.out.persistence.model.projection.NFeCompletaProjection
 import br.com.asoft.nfereader.adapters.out.persistence.model.projection.ProdutoListagemNotaProjection
@@ -66,17 +67,17 @@ object NFeMapper {
         )
 
     fun NFeCompletaProjection.toModel(): NFeCompleta {
-        val transportadora: Transportadora? = if(null != this.transportadoraId)
-        Transportadora(
-            id = transportadoraId!!,
-            userCreate = "",
-            cnpj = transportadoraCpfCnpj,
-            razaoSocial = transportadoraRazaoSocial,
-            ie = transportadoraInscricaoEstadual,
-            uf = transportadoraUf,
-            municipio = transportadoraMunicipio,
-            endereco = transportadoraEndereco
-        ) else null
+        val transportadora: Transportadora? = if (null != this.transportadoraId)
+            Transportadora(
+                id = transportadoraId!!,
+                userCreate = "",
+                cnpj = transportadoraCpfCnpj,
+                razaoSocial = transportadoraRazaoSocial,
+                ie = transportadoraInscricaoEstadual,
+                uf = transportadoraUf,
+                municipio = transportadoraMunicipio,
+                endereco = transportadoraEndereco
+            ) else null
         return NFeCompleta(
             id,
             naturezaOperacao,
@@ -145,8 +146,8 @@ object NFeMapper {
         )
     }
 
-    fun NFeCompleta.toDto(): NFeCompletaDTO {
-        val transportadora: TransportadoraDTO? = if(null != transportadora?.id)
+    fun NFeCompleta.toDto(itemList: List<NFeItemModel>): NFeCompletaDTO {
+        val transportadora: TransportadoraDTO? = if (null != transportadora?.id)
             TransportadoraDTO(
                 id = transportadora!!.id,
                 cnpj = transportadora!!.cnpj,
@@ -219,7 +220,8 @@ object NFeMapper {
                 valorIpiDevolucao = totalICMSDTO.valorIpiDevolucao,
                 valorTotalTributos = totalICMSDTO.valorTotalTributos,
                 valorPis = totalICMSDTO.valorPis,
-            )
+            ),
+            items = itemList.map { it.toDTO() }
         )
     }
 }

@@ -19,5 +19,6 @@ properties:
     type: string
   cfop:
     type: string
-  emitente:
-    $ref: ./EmitenteDTO.yaml
+  nItem:
+    type: integer
+    format: int64
